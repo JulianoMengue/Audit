@@ -165,14 +165,14 @@ public class BerichtController extends AuditController implements Serializable {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Information");
 				alert.setHeaderText(null);
-				alert.setContentText("Alle Felder müssen ausgefüllt sein!");
+				alert.setContentText("Alle Felder mÃ¼ssen ausgefÃ¼llt sein!");
 				alert.showAndWait();
 			}
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Gast");
 			alert.setHeaderText(null);
-			alert.setContentText("Sie sind Gast und dürfen keine Checkliste einfügen!");
+			alert.setContentText("Sie sind Gast und dÃ¼rfen keine Checkliste einfÃ¼gen!");
 			alert.showAndWait();
 		}
 
@@ -225,19 +225,19 @@ public class BerichtController extends AuditController implements Serializable {
 	}
 
 	public void deleteBerichtButton() throws IOException, ClassNotFoundException, SQLException {
-		TableColumn<Bericht, Void> colBtn = new TableColumn<Bericht, Void>("Löschen");
+		TableColumn<Bericht, Void> colBtn = new TableColumn<Bericht, Void>("LÃ¶schen");
 		colBtn.setMinWidth(170);
 		Callback<TableColumn<Bericht, Void>, TableCell<Bericht, Void>> cellFactory = new Callback<TableColumn<Bericht, Void>, TableCell<Bericht, Void>>() {
 			public TableCell<Bericht, Void> call(final TableColumn<Bericht, Void> param) {
 				final TableCell<Bericht, Void> cell = new TableCell<Bericht, Void>() {
 
-					private Button btn = new Button(" Löschen ");
+					private Button btn = new Button(" LÃ¶schen ");
 					{
 						btn.setOnAction((ActionEvent event) -> {
 							try {
 								Alert alert = new Alert(AlertType.CONFIRMATION);
 								alert.setTitle("Information");
-								alert.setHeaderText("Bericht Löschen?");
+								alert.setHeaderText("Bericht LÃ¶schen?");
 								alert.setContentText("Sind Sie sicher?");
 								Optional<ButtonType> result = alert.showAndWait();
 								if (result.get() == ButtonType.OK && !userAudit.getRolle().contentEquals("GAST")) {
@@ -247,7 +247,7 @@ public class BerichtController extends AuditController implements Serializable {
 									Alert alert1 = new Alert(AlertType.WARNING);
 									alert1.setTitle("Gast");
 									alert1.setHeaderText(null);
-									alert1.setContentText("Sie sind Gast und dürfen Keinen Bericht löschen!");
+									alert1.setContentText("Sie sind Gast und dÃ¼rfen Keinen Bericht lÃ¶schen!");
 									alert1.showAndWait();
 								}
 
@@ -319,7 +319,7 @@ public class BerichtController extends AuditController implements Serializable {
 		props.put("mail.smtp.port", "587");
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("audittool2020@gmail.com", "vchjvqkbbcdynval");
+				return new PasswordAuthentication("audittool2020@gmail.com", "");
 			}
 		});
 
@@ -385,9 +385,9 @@ public class BerichtController extends AuditController implements Serializable {
 		}
 
 		List<String> erfuelltList = new ArrayList<>();
-		erfuelltList.add("Voll erfüllt");
-		erfuelltList.add("Teilweise erfüllt");
-		erfuelltList.add("Nicht erfüllt");
+		erfuelltList.add("Voll erfÃ¼llt");
+		erfuelltList.add("Teilweise erfÃ¼llt");
+		erfuelltList.add("Nicht erfÃ¼llt");
 
 		ObservableList<String> observableListErfuellt = FXCollections.observableArrayList(erfuelltList);
 		erfuelltBox.setItems(observableListErfuellt);
