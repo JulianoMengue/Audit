@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BerichtController">
+   <children>
+      <Label layoutX="15.0" layoutY="14.0" text="Audit Bericht" textFill="#1b88a6">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="erfuelltBox" layoutX="352.0" layoutY="331.0" prefHeight="30.0" prefWidth="271.0" />
+      <TableView fx:id="tableViewBericht" layoutX="14.0" layoutY="378.0" prefHeight="334.0" prefWidth="1518.0">
+        <columns>
+          <TableColumn fx:id="tableColumnEingesehene" prefWidth="319.999981880188" sortable="false" text="Eingesehene Dokumente und Aufzeichnungen" />
+          <TableColumn fx:id="tableColumnErfuellt" minWidth="0.0" prefWidth="296.0" sortable="false" text="Erfüllt" />
+            <TableColumn fx:id="tableColumnBemerkungen" prefWidth="741.6000366210938" sortable="false" text="Bemerkungen (Anmerkung, Hinweis, Feststellung)" />
+        </columns>
+      </TableView>
+      <Button fx:id="insertBerichtButton" layoutX="1392.0" layoutY="331.0" mnemonicParsing="false" onAction="#insertBericht" prefHeight="30.0" prefWidth="142.0" text="Bericht einfügen" textFill="#1d7eaa">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="1164.0" layoutY="733.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" text="Fenster schließen" textFill="#1d7eaa">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableViewChecklist" layoutX="16.0" layoutY="118.0" prefHeight="198.0" prefWidth="1518.0">
+        <columns>
+          <TableColumn fx:id="tableColumnNormKapitel" prefWidth="350.39994525909424" sortable="false" text="Standard Normkapitel" />
+          <TableColumn fx:id="tableColumnNormForderung" prefWidth="323.2000732421875" sortable="false" text="Normforderung" />
+            <TableColumn fx:id="tableColumnFragen" prefWidth="841.6000366210938" sortable="false" text="Fragen" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableViewAudit" layoutX="15.0" layoutY="52.0" prefHeight="65.0" prefWidth="1518.0">
+        <columns>
+          <TableColumn fx:id="tableColumnDatum" prefWidth="110.39999389648438" text="Datum " />
+            <TableColumn fx:id="tableColumnUhrzeit" prefWidth="112.00007629394531" text="Uhrzeit" />
+            <TableColumn fx:id="tableColumnAbteilung" prefWidth="146.39996337890625" text="Abteilung" />
+            <TableColumn fx:id="tableColumnAuditart" prefWidth="204.79998779296875" text="Auditart" />
+            <TableColumn fx:id="tableColumnHausherr" prefWidth="285.60003662109375" text="Hausherr" />
+            <TableColumn fx:id="tableColumnAuditorEins" prefWidth="258.39996337890625" text="1.Auditor" />
+            <TableColumn fx:id="tableColumnAuditorZwei" prefWidth="334.3997802734375" text="2.Auditor" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textAreaEingesehene" layoutX="14.0" layoutY="331.0" prefHeight="30.0" prefWidth="338.0" promptText="Eingesehene Dokumente und Aufzeichnungen">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="textAreaBemerkungen" layoutX="623.0" layoutY="331.0" prefHeight="30.0" prefWidth="763.0" promptText="Bemerkungen (Anmerkung, Hinweis, Feststellung)">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="berichtEmailSchicken" layoutX="1329.0" layoutY="733.0" mnemonicParsing="false" onAction="#AlertEmailBericht" prefHeight="30.0" prefWidth="206.0" text="Bericht per Email schicken" textFill="#1d7eaa">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

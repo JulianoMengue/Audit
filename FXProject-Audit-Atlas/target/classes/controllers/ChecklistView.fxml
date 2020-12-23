@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane blendMode="MULTIPLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="744.0" prefWidth="1399.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChecklistController">
+   <children>
+      <Label layoutX="15.0" layoutY="14.0" text="Audit Checkliste" textAlignment="JUSTIFY" textFill="#1b88a6" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Button fx:id="insertChecklistButton" layoutX="1194.0" layoutY="166.0" mnemonicParsing="false" onAction="#insertChecklist" prefHeight="30.0" prefWidth="180.0" text="Checkliste einfügen" textFill="#1d7eaa">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="1235.0" layoutY="700.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="139.0" text="Fenster schließen" textFill="#1d7eaa">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableViewChecklist" layoutX="15.0" layoutY="219.0" prefHeight="471.0" prefWidth="1359.0">
+        <columns>
+          <TableColumn fx:id="tableColumnNormKapitel" prefWidth="257.60001850128174" sortable="false" text="Standard Normkapitel" />
+          <TableColumn fx:id="tableColumnNormForderung" prefWidth="257.5999755859375" sortable="false" text="Normforderung" />
+            <TableColumn fx:id="tableColumnFragen" prefWidth="667.1998901367188" sortable="false" text="Fragen" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableViewAudit" layoutX="15.0" layoutY="66.0" prefHeight="77.0" prefWidth="1359.0">
+        <columns>
+          <TableColumn fx:id="columnDatum" prefWidth="104.0" sortable="false" text="Datum" />
+            <TableColumn fx:id="columnUhrzeit" prefWidth="102.39997863769531" sortable="false" text="Uhrzeit" />
+            <TableColumn fx:id="columnAbteilung" prefWidth="144.79998779296875" sortable="false" text="Abteilung" />
+            <TableColumn fx:id="columnAuditart" prefWidth="203.20001220703125" sortable="false" text="Auditart" />
+            <TableColumn fx:id="columnHausherr" prefWidth="252.00006103515625" sortable="false" text="Hausherr" />
+            <TableColumn fx:id="columnAuditorEins" prefWidth="250.4000244140625" sortable="false" text="1.Auditor" />
+            <TableColumn fx:id="columnAuditorZwei" prefWidth="299.20001220703125" sortable="false" text="2.Auditor" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textAreaStandartNormKapitel" layoutX="15.0" layoutY="166.0" prefHeight="25.0" prefWidth="260.0" promptText="Standard Normkapitel">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="textAreaNormForderung" layoutX="275.0" layoutY="166.0" prefHeight="25.0" prefWidth="260.0" promptText="Normforderung">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="textAreaFragen" layoutX="535.0" layoutY="166.0" prefHeight="30.0" prefWidth="643.0" promptText="Fragen">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</Pane>
