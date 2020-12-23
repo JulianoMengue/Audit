@@ -168,7 +168,7 @@ public class AuditController implements Initializable {
 	@SuppressWarnings("resource")
 	public static MongoCollection<Document> getConnect(String collection) {
 		MongoClientURI uri = new MongoClientURI(
-				"mongodb+srv://bananastaut:020881Banana@bananacluster.gzaux.mongodb.net/<BananaDatabase>?retryWrites=true&w=majority");
+				"mongodb+srv://bananastaut:""@bananacluster.gzaux.mongodb.net/<"">?retryWrites=true&w=majority");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoCollection<Document> coll = mongoClient.getDatabase("BananaDatabase").getCollection(collection);
 		return coll;
@@ -265,11 +265,11 @@ public class AuditController implements Initializable {
 	}
 
 	public void buttonDeleteAudit() throws IOException, ClassNotFoundException, SQLException {
-		TableColumn<Audit, Void> colBtn = new TableColumn<Audit, Void>("Audit löschen");
+		TableColumn<Audit, Void> colBtn = new TableColumn<Audit, Void>("Audit lÃ¶schen");
 		Callback<TableColumn<Audit, Void>, TableCell<Audit, Void>> cellFactory = new Callback<TableColumn<Audit, Void>, TableCell<Audit, Void>>() {
 			public TableCell<Audit, Void> call(final TableColumn<Audit, Void> param) {
 				final TableCell<Audit, Void> cell = new TableCell<Audit, Void>() {
-					private Button btn = new Button("Löschen");
+					private Button btn = new Button("LÃ¶schen");
 					{
 						btn.setOnAction((ActionEvent event) -> {
 							try {
@@ -279,7 +279,7 @@ public class AuditController implements Initializable {
 										Alert alert = new Alert(AlertType.CONFIRMATION);
 										Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 										stage.getIcons().add(new Image(("file:icon.png")));
-										alert.setHeaderText("Audit löschen?");
+										alert.setHeaderText("Audit lÃ¶schen?");
 										alert.setContentText("Sind Sie sicher?");
 										Optional<ButtonType> result = alert.showAndWait();
 										if (result.get() == ButtonType.OK) {
@@ -296,7 +296,7 @@ public class AuditController implements Initializable {
 									alert.setTitle("Gast E-Mail Konto");
 									alert.setHeaderText(null);
 									alert.setContentText(userAudit.getEmail() + " ist als " + userAudit.getRolle()
-											+ " angemeldet und darf kein Audit löschen");
+											+ " angemeldet und darf kein Audit lÃ¶schen");
 									alert.showAndWait();
 								}
 							} catch (SQLException e1) {
@@ -434,12 +434,12 @@ public class AuditController implements Initializable {
 	}
 
 	public void massnahmeButtonToTable() throws IOException, ClassNotFoundException, SQLException {
-		TableColumn<Audit, Void> colBtn = new TableColumn<Audit, Void>("Maßnahme");
+		TableColumn<Audit, Void> colBtn = new TableColumn<Audit, Void>("MaÃŸnahme");
 		Callback<TableColumn<Audit, Void>, TableCell<Audit, Void>> cellFactory = new Callback<TableColumn<Audit, Void>, TableCell<Audit, Void>>() {
 			public TableCell<Audit, Void> call(final TableColumn<Audit, Void> param) {
 				final TableCell<Audit, Void> cell = new TableCell<Audit, Void>() {
 
-					private Button btn = new Button("Maßnahme");
+					private Button btn = new Button("MaÃŸnahme");
 					{
 						btn.setOnAction((ActionEvent event) -> {
 							massnahmeId = getTableView().getItems().get(getIndex());
@@ -485,7 +485,7 @@ public class AuditController implements Initializable {
 	public void searchMassnahmenart() throws ClassNotFoundException, SQLException {
 
 		int sofortmassnahme = 0;
-		int korrekturmaßnahme = 0;
+		int korrekturmaÃŸnahme = 0;
 		int vorbeugemassnahme = 0;
 		int information = 0;
 
@@ -494,14 +494,14 @@ public class AuditController implements Initializable {
 		ArrayList<Document> result = new ArrayList<Document>();
 		query.into(result);
 		for (int i = 0; i < result.size(); i++) {
-			if (result.get(i).getString("massnahmenart").contentEquals("Sofortmaßnahme")) {
+			if (result.get(i).getString("massnahmenart").contentEquals("SofortmaÃŸnahme")) {
 				sofortmassnahme = sofortmassnahme + 1;
 			}
-			if (result.get(i).getString("massnahmenart").contentEquals("Korrekturmaßnahme")) {
-				korrekturmaßnahme = korrekturmaßnahme + 1;
+			if (result.get(i).getString("massnahmenart").contentEquals("KorrekturmaÃŸnahme")) {
+				korrekturmaÃŸnahme = korrekturmaÃŸnahme + 1;
 
 			}
-			if (result.get(i).getString("massnahmenart").contentEquals("Vorbeugemaßnahme")) {
+			if (result.get(i).getString("massnahmenart").contentEquals("VorbeugemaÃŸnahme")) {
 				vorbeugemassnahme = vorbeugemassnahme + 1;
 			}
 			if (result.get(i).getString("massnahmenart").contentEquals("Information")) {
@@ -510,7 +510,7 @@ public class AuditController implements Initializable {
 		}
 		String s = String.valueOf(sofortmassnahme);
 		labelSofortmassnahme.setText(s);
-		String k = String.valueOf(korrekturmaßnahme);
+		String k = String.valueOf(korrekturmaÃŸnahme);
 		labelKorrekturmassnahme.setText(k);
 		String v = String.valueOf(vorbeugemassnahme);
 		labelVorbeugemassnahme.setText(v);
@@ -596,7 +596,7 @@ public class AuditController implements Initializable {
 		Stage window = new Stage();
 		window.getIcons().add(new Image(("file:icon.png")));
 		window.initModality(Modality.APPLICATION_MODAL);
-		window.setTitle("Maßnahme");
+		window.setTitle("MaÃŸnahme");
 		window.setScene(scene);
 		window.showAndWait();
 		ubersicht();
@@ -657,7 +657,7 @@ public class AuditController implements Initializable {
 					Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 					stage.getIcons().add(new Image(("file:icon.png")));
 					alert.setTitle("Information");
-					alert.setContentText("E-Mail muss gültig sein.");
+					alert.setContentText("E-Mail muss gÃ¼ltig sein.");
 					alert.showAndWait();
 
 				} else if (password.trim().length() < 8) {
@@ -706,7 +706,7 @@ public class AuditController implements Initializable {
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			String emailAdmin = "audittool2020@gmail.com";
-			String passwordAdmin = "vchjvqkbbcdynval";
+			String passwordAdmin = "";
 
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(emailAdmin, passwordAdmin);
@@ -754,24 +754,24 @@ public class AuditController implements Initializable {
 			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 			stage.getIcons().add(new Image(("file:icon.png")));
 			alert.setHeaderText("Sie nutzen kein Admin E-Mail-Konto!");
-			alert.setContentText("Nur Admins dürfen registrierte Teilnehmer sehen.");
+			alert.setContentText("Nur Admins dÃ¼rfen registrierte Teilnehmer sehen.");
 			alert.showAndWait();
 		}
 	}
 
 	public void deleteUsersButtonToTable() throws IOException, ClassNotFoundException, SQLException {
-		TableColumn<User, Void> colBtn = new TableColumn<User, Void>("User löschen");
+		TableColumn<User, Void> colBtn = new TableColumn<User, Void>("User lÃ¶schen");
 		colBtn.setMinWidth(170);
 		Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = new Callback<TableColumn<User, Void>, TableCell<User, Void>>() {
 			public TableCell<User, Void> call(final TableColumn<User, Void> param) {
 				final TableCell<User, Void> cell = new TableCell<User, Void>() {
-					private Button btn = new Button("Löschen");
+					private Button btn = new Button("LÃ¶schen");
 					{
 						btn.setOnAction((ActionEvent event) -> {
 							Alert alert = new Alert(AlertType.CONFIRMATION);
 							Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 							stage.getIcons().add(new Image(("file:icon.png")));
-							alert.setTitle("User löschen?");
+							alert.setTitle("User lÃ¶schen?");
 							alert.setHeaderText("Sind Sie sicher?");
 							Optional<ButtonType> result = alert.showAndWait();
 							if (result.get() == ButtonType.OK) {
@@ -825,7 +825,7 @@ public class AuditController implements Initializable {
 			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 			stage.getIcons().add(new Image(("file:icon.png")));
 			alert.setTitle("Information");
-			alert.setHeaderText("Das Admin-Konto kann nicht gelöscht werden!");
+			alert.setHeaderText("Das Admin-Konto kann nicht gelÃ¶scht werden!");
 			alert.showAndWait();
 			ok = false;
 		} else if (!userAudit.getRolle().contains("ADMIN")) {
@@ -913,7 +913,7 @@ public class AuditController implements Initializable {
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("audittool2020@gmail.com", "vchjvqkbbcdynval");
+				return new PasswordAuthentication("audittool2020@gmail.com", "");
 			}
 		});
 
