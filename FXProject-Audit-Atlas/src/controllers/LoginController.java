@@ -62,7 +62,7 @@ public class LoginController implements Initializable {
 	@SuppressWarnings("resource")
 	public MongoCollection<Document> getConnect(String collection) {
 		MongoClientURI uri = new MongoClientURI(
-				"mongodb+srv://bananastaut:020881Banana@bananacluster.gzaux.mongodb.net/<BananaDatabase>?retryWrites=true&w=majority");
+				"mongodb+srv://bananastaut:""@bananacluster.gzaux.mongodb.net/<"">?retryWrites=true&w=majority");
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoCollection<Document> coll = mongoClient.getDatabase("BananaDatabase").getCollection(collection);
 		return coll;
@@ -179,7 +179,7 @@ public class LoginController implements Initializable {
 
 				Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 					String emailAdmin = "audittool2020@gmail.com";
-					String passwordAdmin = "vchjvqkbbcdynval";
+					String passwordAdmin = "";
 
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(emailAdmin, passwordAdmin);
